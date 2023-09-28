@@ -9,18 +9,18 @@ import os
 cables = 'sub_cables.geojson'
 zoom = solara.reactive(2)
 center = solara.reactive((20, 0))
-
 #layer = solara.reactive(cables)
 
 class Map(leafmap.Map):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Add what you want below
-        self.load_data()
+        #self.load_data()
         self.add_stac_gui()
 
-    def load_data(self):
-        self.add_geojson(in_geojson=cables, layer_name='sub_cables')
+    #def load_data(self):
+     #   self.add_geojson() # in_geojson=layer.value, layer_name='sub_cables')
+
 
 
 @solara.component
@@ -52,7 +52,8 @@ def Page():
         set_filename(file["name"])
         f = file["file_obj"]
         set_content(f.read(100))
-        print(filename)
+        print(f"File Name: {filename}")
+        #layer.value = filename
         #load_data(filename)
         #Map.load_data(filename)
         #my_map.add_geojson(in_geojson=filename, layer_name='geojson_layer')
